@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <calender :value="data" ></calender>
+    <calender></calender>
   </div>
 </template>
 
@@ -9,7 +9,7 @@ export default {
   name: 'app',
   data () {
     return {
-      data: ['2020,1,1','2020,3,6'],
+
     }
   }
 }
