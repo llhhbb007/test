@@ -1,11 +1,11 @@
 <template>
-   <div>
+   <div class="main">
      <div style="display: flex;justify-content: center">
        <div style="margin-right: 20px" @click="upClick">《</div>
        <div>{{FullYear}}年</div>
        <div style="margin-left: 20px" @click="nextClick">》</div>
      </div>
-     <div class="main">
+     <div class="center">
        <div class="info" v-for="item in Month">
          <div class="title">{{FullYear+'年'+item+'月'}}</div>
          <div class="calender">
@@ -37,15 +37,18 @@
             }
         },
         created(){
-          console.log()
         },
         mounted(){
-          document.querySelectorAll('.calender-item').forEach(i =>{
-            if(this.value.includes(i.dataset.value)){
-              i.style.backgroundColor = 'rgb(0, 182, 240)'
-              i.style.color = '#fff'
+          if(this.value){
+            if(document.querySelectorAll('.calender-item')){
+              document.querySelectorAll('.calender-item').forEach(i =>{
+                if(this.value.includes(i.dataset.value)){
+                  i.style.backgroundColor = 'rgb(0, 182, 240)'
+                  i.style.color = '#fff'
+                }
+              })
             }
-          })
+          }
         },
         watch:{
           FullYear(){
@@ -72,7 +75,7 @@
           },
           //获取选择的日期
           dayClick(e){
-            console.log(e.target.style.backgroundColor)
+            console.log(this.value)
             if(e.target.style.backgroundColor === 'rgb(0, 182, 240)'){
               this.value.splice(this.value.indexOf(e.target.dataset.value), 1)
               e.target.style.backgroundColor = '#fff'
@@ -82,7 +85,6 @@
               e.target.style.backgroundColor = 'rgb(0, 182, 240)'
               e.target.style.color = '#fff'
             }
-            console.log(this.value)
           },
           //根据年月获取天数
           getDaysInOneMonth(year, month){
@@ -94,7 +96,13 @@
 </script>
 
 <style scoped>
-.main{
+  .main{
+    width: 960px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+.center{
   width: 950px;
   display: flex;
   flex-wrap: wrap;
@@ -112,6 +120,7 @@
   margin: 5px -1px -1px 0px;
 }
 .title{
+  width: 950px;
   text-align: center;
   margin-left: -4px;
 }

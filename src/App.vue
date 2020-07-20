@@ -1,7 +1,5 @@
 <template>
-  <div id="app">
-    <calender></calender>
-  </div>
+  <calender :value="data"></calender>
 </template>
 
 <script>
@@ -9,7 +7,7 @@ export default {
   name: 'app',
   data () {
     return {
-
+        data:[],
     }
   }
 }
