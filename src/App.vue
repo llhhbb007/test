@@ -1,5 +1,5 @@
 <template>
-  <calender :value="data"></calender>
+    <calender v-model="dataTime"></calender>
 </template>
 
 <script>
@@ -7,9 +7,9 @@ export default {
   name: 'app',
   data () {
     return {
-        data:[],
+      dataTime:[],
     }
-  }
+  },
 }
 </script>
 

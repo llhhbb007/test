@@ -23,6 +23,10 @@
 <script>
     export default {
         name: "calender",
+        model: {
+          prop: 'value',
+          event: 'event'
+        },
         props: {
           value: {
             type: Array,
@@ -75,13 +79,14 @@
           },
           //获取选择的日期
           dayClick(e){
-            console.log(this.value)
             if(e.target.style.backgroundColor === 'rgb(0, 182, 240)'){
               this.value.splice(this.value.indexOf(e.target.dataset.value), 1)
+              this.$emit('event', this.value);
               e.target.style.backgroundColor = '#fff'
               e.target.style.color = '#333'
             }else {
               this.value.push(e.target.dataset.value)
+              this.$emit('event', this.value);
               e.target.style.backgroundColor = 'rgb(0, 182, 240)'
               e.target.style.color = '#fff'
             }
